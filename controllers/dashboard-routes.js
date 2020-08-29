@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -30,6 +30,12 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+router.get('/add-post', (req, res) => {
+    if (req.session.loggedIn) {
+        res.render('add-post');
+    }
 });
 
 module.exports = router 
