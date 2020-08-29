@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog</title>
+    <link rel="stylsheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1>
+                <a href="/">The Tech Blog</a>
+            </h1>
+            <nav>
+                {{#if loggedIn}}
+                <a href="/dashboard">Dashboard</a>
+                <button id="logout">Logout</button>
+                {{else}}
+                <a href="/login">Login</a>
+                {{/if}}
+            </nav>
+        </header>
+    </div>
+    <main>
+        {{{ body }}}
+    </main>
+    <footer>Tarah McElyea</footer>
+    <div>
+        {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+        {{/if}}
+    </div>
+</body>
+</html> 
