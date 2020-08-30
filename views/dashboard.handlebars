@@ -4,6 +4,7 @@
     <div>
         {{#each posts as |post|}}
             {{> post-info post}}
+            <a href="/dashboard/edit/{{post.id}}">Edit Post</a>
         {{/each}}
     </div>
 </section>

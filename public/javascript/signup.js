@@ -15,7 +15,18 @@ async function signupFormHandler(event) {
         });
 
         if (response.ok) {
-            console.log('success')
+            const res2 = await fetch('/api/users/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    username,
+                    password
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (res2.ok) {
+                document.location.replace('/dashboard');
+            }
         } else {
             alert(response.statusText)
         }
